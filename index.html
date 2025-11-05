@@ -10,7 +10,7 @@
 
     body {
       height: 120vh;
-      overflow:auto;
+      overflow:visible;
       font-family: 'Cairo', sans-serif;
       color: #333;
       background: linear-gradient(135deg, #ff868e, #dbe7f0);
@@ -91,27 +91,38 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    .photo {
-      position:absolute;
-      width: 160px;
-      height: 160px;
-      border-radius: 20px;
-      object-fit:cover;
-      box-shadow: 0 0 25px rgba(255, 150, 180, 0.4);
-      opacity: 0.9;
-      z-index: 1;
-      animation: gentleMove 6s ease-in-out infinite alternate;
-    }
+/* 🌸 الصور */
+.photo {
+  position: absolute;
+  width: 18vw;
+  max-width: 150px;
+  min-width: 90px;
+  aspect-ratio: 1/1;
+  border-radius: 15px;
+  object-fit: cover;
+  box-shadow: 0 0 25px rgba(255, 150, 180, 0.4);
+  opacity: 0.9;
+  z-index: 1;
+  animation: gentleMove 6s ease-in-out infinite alternate;
+}
 
-    .photo1 { top: 10%; left: 5%; animation-delay: 1s; }
-    .photo2 { top: 10%; right: 5%; animation-delay: 2s; }
-    .photo3 { bottom: 8%; left: 8%; animation-delay: 3s; }
-    .photo4 { bottom: 8%; right: 8%; animation-delay: 4s; }
+/* توزيع الصور حسب المكان */
+.photo1 { top: 8%; left: 5%; animation-delay: 1s; }
+.photo2 { top: 8%; right: 5%; animation-delay: 2s; }
+.photo3 { bottom: 10%; left: 8%; animation-delay: 3s; }
+.photo4 { bottom: 10%; right: 8%; animation-delay: 4s; }
 
-    @keyframes gentleMove {
-      0% { transform: scale(1) rotate(0deg); }
-      100% { transform: scale(1.05) rotate(2deg); }
-    }
+/* الصور تبعد شوية على الموبايل عشان ما تغطيش الكلام */
+@media (max-width: 768px) {
+  .photo1, .photo2 { top: 2%; }
+  .photo3, .photo4 { bottom: 2%; }
+}
+
+/* الصور ما تغطيش النص أو الزر */
+h1, #message, #counter, button {
+  position: relative;
+  z-index: 3;
+}
 
     audio { display: none; }
   </style>
@@ -204,6 +215,3 @@ ${remHours.toString().padStart(2,'0')}:${remMinutes.toString().padStart(2,'0')}:
   </script>
 </body>
 </html>
-
-
-
